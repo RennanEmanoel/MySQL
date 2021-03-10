@@ -1,0 +1,165 @@
+-- Estudos em MySQL
+
+CREATE DATABASE bancodeteste; 
+USE bancodeteste;
+-- --------------------------------------------------------------------------
+
+CREATE TABLE PACIENTES(
+    NUMERO int auto_increment primary key NOT NULL,
+    NOME varchar(30) NOT NULL,
+    CPF varchar(18) NOT NULL,
+    IDADE int NOT NULL
+);
+
+insert into  PACIENTES(nome, cpf, idade) values ('Joaquim','111.111.111-11',20);
+insert into  PACIENTES(nome, cpf, idade) values ('Marcos','222.222.222-22',37);
+insert into  PACIENTES(nome, cpf, idade) values ('Marcelo','333.333.333-33',16);
+insert into  PACIENTES(nome, cpf, idade) values ('Ana','444.444.44-44',52);
+
+-- --------------------------------------------------------------------------
+
+CREATE TABLE MEDICOS (
+    NUMERO int auto_increment primary key NOT NULL,
+    NOME varchar (30) NOT NULL,
+    CPF varchar (18) NOT NULL,
+    IDADE int NOT NULL,
+    CIDADE varchar (20) NOT NULL,
+    ESPECIALIDADE varchar (35) NOT NULL
+);
+
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Joaquim','111.111.111-11',20,'Campinas','Ortopedista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Roberto','222.222.222-22',37, 'Sorocaba','Traumatologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Marcelo','333.333.333-33',16,'Atibaia','Cardiologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Ana','444.444.44-44',52,'FlorianÃ³polis','Ortopedista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Beatriz','555.555.555-55',39,'FlorianÃ³polis','Cardiologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Carlos','666.666.666-66',39,'FlorianÃ³polis','Traumatologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Denise','777.777.777-77',31,'FlorianÃ³polis','Traumatologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Marcos','123.456.789-00',31,'Americana','Traumatologista');
+insert into  MEDICOS(nome, cpf, idade, cidade, especialidade) values ('Rodri','888.888.888-99',25, 'Guararema','Gastro');
+
+-- --------------------------------------------------------------------------
+CREATE TABLE EMPREGADO(
+    NUM int auto_increment primary key NOT NULL,
+    NOME varchar (30) NOT NULL,
+    IDADE int NOT NULL,
+    DEPTO varchar (30) NOT NULL,
+    SALARIO  int NOT NULL,
+    CPF varchar (15) NOT NULL
+);
+
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Joana', 20,'Vendas',2500,'11111111100');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Maria', 35,'Vendas',21300,'2000002211');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Marcos', 39,'Compras',28000,'12300000044');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Luciana', 38,'Tecnologia da InformaÃ§Ã£o',4800,'12345678977');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Beatriz', 30,'Tecnologia da InformaÃ§Ã£o',3100,'000001234577');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Eduardo', 53,'Vendas',15000,'88888888880');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Janaina', 27,'Financeiro',2950,'33333000000');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Luana', 25,'Financeiro',3300,'99999888881');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Fabiana', 40,'Financeiro',5100,'01234567812');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Daniela', 28,'RH',6000,'12312312300');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Dirce', 47,'RH',4200,'987987987-44');
+insert into  EMPREGADO(nome, idade, depto, salario,cpf) values ('Dulce', 58,'Vendas',24800,'55566622200');
+
+-- --------------------------------------------------------------------------
+CREATE TABLE FUNCIONARIOS(
+    NUMERO int auto_increment primary key NOT NULL,
+    NOME varchar (40) NOT NULL,SALARIO  int NOT NULL,
+    ESTADO varchar (2) NOT NULL,ANO_ADMISSAO  int NOT NULL
+);
+
+insert into  FUNCIONARIOS (nome, salario, estado, ano_admissao) values ('Luciana Buhrer', 5720,'SP',1995);
+insert into  FUNCIONARIOS (nome, salario, estado, ano_admissao) values ('Marcel Almeida', 4100,'SP',2012);
+insert into  FUNCIONARIOS (nome, salario, estado, ano_admissao) values ('Paulo Almeida Junior', 2500,'SP',2007);
+insert into  FUNCIONARIOS (nome, salario, estado, ano_admissao) values ('Viviane Pereira', 6300,'SP',1999);
+
+
+-- Aprendendo Funções de Agregação
+
+CREATE TABLE PEDIDOS (
+    ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    CLIENTE varchar (30) NOT NULL,
+    FRETE int NOT NULL,
+    VIA varchar (1) NOT NULL,
+    DATAPEDIDO date NOT NULL
+);
+
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Joaquim','M',200,'2020-10-05');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Pedro','M',180,'2020-05-04');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Pedro','T',90,'2020-02-06');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Patricia','M',120,'2019-02-07');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Cristiane','T',100,'2019-05-14');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Cristiane','T',100,'2020-06-15');
+insert into  PEDIDOS (CLIENTE, VIA, FRETE, DATAPEDIDO) values ('Cristiane','A',135,'2020-08-17');
+
+-- -------------------------------------------------------------
+
+CREATE TABLE CLIENTES (
+    NUMERO INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    NOME varchar (30) NOT NULL,
+    CIDADE varchar (30) NOT NULL,
+    IDADE int NOT NULL,
+    ENDERECO varchar (30) NOT NULL
+);
+
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Joaquim','SÃ£o Paulo',20,'Rua Eli, 1000');
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Ana','SÃ£o Paulo',32,'Av Paulista, 1234');
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Maria','Campinas',50,'Rua Taquari, 875');
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Tatiana','Sorocaba',38,'Rua Cesario galeno, 448');
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Bruno','Vinhedo',17,'Rua dos DonatÃ¡rios, 346');
+insert into  CLIENTES (NOME, CIDADE, IDADE, ENDERECO) values ('Renata','Campinas',26,'Rua Bom Pastor, 452');
+
+
+-- -------------------------------------------------------------
+CREATE TABLE CIDADES (
+    ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    CIDADE varchar (30) NOT NULL,
+    PAIS varchar (30) NOT NULL
+);
+
+insert into  CIDADES (CIDADE, PAIS) values ('MilÃ£o','ItÃ¡lia');
+insert into  CIDADES (CIDADE, PAIS) values ('Caracas','Venezuela');
+insert into  CIDADES (CIDADE, PAIS) values ('Barcelona','Espanha');
+insert into  CIDADES (CIDADE, PAIS) values ('Boston ','EUA');
+insert into  CIDADES (CIDADE, PAIS) values ('SÃ£o Paulo','Brasil');
+insert into  CIDADES (CIDADE, PAIS) values ('SÃ£o JosÃ© dos Campos','Brasil');
+insert into  CIDADES (CIDADE, PAIS) values ('Campinas','Brasil');
+
+-- -------------------------------------------------------------
+
+CREATE TABLE FUNCIONARIOS (
+    ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    NOME varchar (30) NOT NULL,
+    EMAIL varchar (30) NOT NULL,
+    SALARIO numeric (20,2) NOT NULL,
+    SEXO varchar (1) NOT NULL,
+    SETOR varchar (3) NOT NULL,
+    ESTCIVIL varchar (1) NOT NULL
+);
+
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Maria','teste0@gmail.com', 2800, 'F', 'MKT','C');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Patricia','teste1@gmail.com', 1500, 'F', 'VEN','C');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Armando','teste2@gmail.com', 3000, 'M', 'PR);
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Adriano','teste3@gmail.com', 4000, 'M', 'TI','S');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Cleiton','teste4@gmail.com', 5000, 'M', 'TI','
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Carla','teste5@gmail.com', 1200, 'F', 'TI','C');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Denise','teste6@gmail.com', 4200, 'F', 'MKT','C');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Eloisa','teste7@gmail.com', 7000, 'F', 'MKT','S');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('FÃ¡bio','teste8@gmail.com', 2000, 'M', 'RH','S');
+insert into  FUNCIONARIOS (NOME, EMAIL, SALARIO, SEXO, SETOR, ESTCIVIL) values ('Igor','teste9@gmail.com', 2500, 'M', 'RH','C');
+
+-- -------------------------------------------------------------
+CREATE TABLE PRODUTOS (
+    ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    DESCRICAO varchar (40) NOT NULL,
+    QUANT int NOT NULL,
+    PRECO_VENDA numeric (20,2) NOT NULL,
+    CUSTO numeric (20,2) NOT NULL
+);
+
+insert into  PRODUTOS (DESCRICAO, QUANT, PRECO_VENDA, CUSTO) values ('CANETA', 1000, 10, 5 );
+insert into  PRODUTOS (DESCRICAO, QUANT, PRECO_VENDA, CUSTO) values ('LÃPIS', 2000, 8, 4 );
+insert into  PRODUTOS (DESCRICAO, QUANT, PRECO_VENDA, CUSTO) values ('BORRACHA', 800, 4, 2 );
+insert into  PRODUTOS (DESCRICAO, QUANT, PRECO_VENDA, CUSTO) values ('APONTADOR', 150, 12, 7 );
+insert into  PRODUTOS (DESCRICAO, QUANT, PRECO_VENDA, CUSTO) values ('RÃGUA', 600, 3, 1);
+
+-- -------------------------------------------------------------
